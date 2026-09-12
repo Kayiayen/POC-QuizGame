@@ -1,0 +1,92 @@
+.menu-button {
+	-fx-font-size: 20px;
+	-fx-background-radius: 10px;
+	-fx-pref-width: 200px;
+	-fx-pref-height: 50px;
+	-fx-background-color: lightblue;
+}
+
+.difficulty-button {
+	-fx-font-size: 20px;
+	-fx-background-radius: 10px;
+	-fx-pref-width: 300px;
+	-fx-pref-height: 50px;
+}
+
+#easy{
+	-fx-background-color: lightblue;
+}
+
+#intermediate{
+	-fx-background-color: lightgreen;
+}
+
+#hard{
+	-fx-background-color: red;
+}
+
+/*hover color*/
+#play:hover,
+#settings:hover,
+#exit:hover {
+    -fx-background-color: grey;
+}
+
+/*the pressed color is so fast */
+
+/*pressed color*/
+#play:pressed,
+#settings:pressed,
+#exit:pressed {
+    -fx-background-color: red;
+}
+
+#title {
+
+	-fx-font-size: 50px;
+}
+
+
+.answer-button {
+	-fx-font-size: 20px;
+	-fx-background-radius: 10px;
+	-fx-pref-width: 350px;
+	-fx-pref-height: 50px;
+}
+
+.title {
+	-fx-font-size: 50px
+}
+
+#answer1:hover,
+#answer2:hover,
+#answer3:hover,
+#answer4:hover {
+    -fx-background-color: grey;
+}
+
+/*the pressed color is so fast */
+
+#answer1:pressed,
+#answer2:pressed,
+#answer3:pressed,
+#answer4:pressed {
+    -fx-background-color: red;
+}
+
+
+#answer1 {
+	-fx-background-color: orange;
+}
+
+#answer2 {
+	-fx-background-color: blue;
+}
+
+#answer3 {
+	-fx-background-color: green;
+}
+
+#answer4 {
+	-fx-background-color: yellow;
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="quiz.UIController"
+      spacing="20"
+      alignment="CENTER">
+
+    <Label fx:id="title" text="QuizGame" />
+
+    <Button fx:id="play" 
+      text="Play" 
+    styleClass="menu-button"
+    onAction="#handlePlay"  />
+
+    <Button fx:id="settings" 
+      text="Settings" 
+    styleClass="menu-button" />
+
+    <Button fx:id="exit" 
+      text="Exit" 
+    styleClass="menu-button" />
+
+</VBox>
