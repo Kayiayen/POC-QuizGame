@@ -1,4 +1,4 @@
-**#Proof of Concept Quiz Game**
+# **Proof of Concept Quiz Game**
 
 **TO DO**
 
@@ -7,5 +7,6 @@
 3. Animations / Transitions
 4. Quiz Logic
 5. Question parser
+6. Question file format
 
 
