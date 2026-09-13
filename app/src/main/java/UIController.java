@@ -30,7 +30,7 @@ public class UIController {
     private Button hard;
 
     @FXML
-    private Button answer1; //example only
+    private Button back;
 
     @FXML // Difficulty selector scene
     private void handlePlay(ActionEvent event) throws IOException {
@@ -62,7 +62,7 @@ public class UIController {
         scene.setRoot(FXMLLoader.load(getClass().getResource(fxml)));
     }
 
-     @FXML // Difficulty selector scene
+     @FXML // quiz scene
     private void easyStart(ActionEvent event) throws IOException {
 
         Parent difficultyRoot =
