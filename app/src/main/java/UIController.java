@@ -37,7 +37,7 @@ public class UIController {
     private ToggleButton hardToggle;
 
     @FXML
-    private Button startButton;
+    private Button back;
 
     @FXML 
     private VBox settingsOverlay;
@@ -121,18 +121,11 @@ public class UIController {
         }
     }
 
-    private void updateDescription (Toggle selected) {
-        if (selected == null) {
-            descArea.setText("");
-        } else {
-            ToggleButton btn = (ToggleButton) selected;
-            switch (btn.getText()) {
-            case "Easy"         -> descArea.setText("Insert Easy Description");
-            case "Intermediate" -> descArea.setText("Insert Intermediate Description");
-            case "Hard"         -> descArea.setText("Insert Hard Description");
-            }
-        }
-    }
+     @FXML // quiz scene
+    private void easyStart(ActionEvent event) throws IOException {
+
+        Parent difficultyRoot =
+            FXMLLoader.load(getClass().getResource("/quiz.fxml"));
 
 
     
