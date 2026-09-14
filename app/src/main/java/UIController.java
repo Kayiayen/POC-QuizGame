@@ -2,12 +2,19 @@ package quiz;
 
 import java.io.IOException;
 
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Toggle;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.stage.Stage;
+import javafx.scene.Node;
+import javafx.fxml.FXML;
 
 public class UIController {
 	// the logic of the buttons should be implemented here
@@ -21,56 +28,112 @@ public class UIController {
     private Button exit; 
 
     @FXML
-    private Button easy;
+    private ToggleButton easyToggle;
 
     @FXML
-    private Button intermediate;
+    private ToggleButton intermediateToggle;
 
     @FXML
-    private Button hard;
+    private ToggleButton hardToggle;
 
     @FXML
-    private Button answer1; //example only
+    private Button startButton;
 
-    @FXML // Difficulty selector scene
-    private void handlePlay(ActionEvent event) throws IOException {
+    @FXML 
+    private VBox settingsOverlay;
 
-        Parent difficultyRoot =
-            FXMLLoader.load(getClass().getResource("/difficulty.fxml"));
+    @FXML
+    private ToggleGroup difficultyGroup = new ToggleGroup();
 
-        Scene scene = ((Button) event.getSource()).getScene();
+    @FXML
+    private TextArea descArea;
 
-        scene.setRoot(difficultyRoot);
+    @FXML
+    private void initialize () {
+        difficultyGroup.selectedToggleProperty().addListener(
+            (obs, oldToggle, newToggle) -> updateDescription(newToggle)
+        );
     }
 
-    @FXML // Difficulty info scene
-    private void handleDifficulty(ActionEvent event) throws IOException {
+    @FXML
+    private void menuAction(ActionEvent event) throws IOException {
+        
+        String id = ((Node) event.getSource()).getId();
+        
+        switch (id) {
+        case "playButton"     -> playAction(event);
+        case "settingsButton" -> openSettings();
+        case "settingsClose"  -> closeSettings();
+        case "helpButton"     -> helpInfo();
+        case "exitButton"     -> exitGame(event);
+        }
+    }
 
-    Button clickedButton = (Button) event.getSource();
-    String difficulty = clickedButton.getText();
-    Scene scene = clickedButton.getScene();
+    
+    private void playAction(ActionEvent event) throws IOException {
+        Parent difficultyRoot =
+                    FXMLLoader.load(getClass().getResource("/difficulty.fxml"));
 
-    String fxml;
+                Scene scene = ((Button) event.getSource()).getScene();
+                scene.setRoot(difficultyRoot);
+    }
 
-        switch (difficulty) {
-        case "Easy":   fxml = "/easy-ui.fxml";   break;
-        case "Medium": fxml = "/medium-ui.fxml"; break;
-        case "Hard":   fxml = "/hard-ui.fxml";   break;
-        default:       return;
+    private void openSettings() {
+        settingsOverlay.setVisible(true);
+        settingsOverlay.setManaged(true);
+    }
+
+    private void closeSettings() {
+        settingsOverlay.setVisible(false);
+        settingsOverlay.setManaged(false);
+    }
+
+        private void helpInfo () {
+       System.out.println("Insert Game Mechanics");
+    }
+    
+    private void exitGame (ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void difficultyStart(ActionEvent event) throws IOException {
+        Toggle selected = difficultyGroup.getSelectedToggle();
+
+        if (selected == null) {
+            System.out.println("Select difficulty");
+            return;
         }
 
+        String difficulty = ((ToggleButton) selected).getText();
+        Scene scene = ((ToggleButton) selected).getScene();
+
+            String fxml = switch (difficulty) {
+            case "Easy"         -> "/quiz.fxml";
+            case "Intermediate" -> "/Intermediate-ui.fxml";
+            case "Hard"         -> "/hard-ui.fxml";
+            default             -> null;
+            };
+
+        if (fxml != null) {
         scene.setRoot(FXMLLoader.load(getClass().getResource(fxml)));
+        }
     }
 
-     @FXML // Difficulty selector scene
-    private void easyStart(ActionEvent event) throws IOException {
-
-        Parent difficultyRoot =
-            FXMLLoader.load(getClass().getResource("/quiz.fxml"));
-
-        Scene scene = ((Button) event.getSource()).getScene();
-
-        scene.setRoot(difficultyRoot);
+    private void updateDescription (Toggle selected) {
+        if (selected == null) {
+            descArea.setText("");
+        } else {
+            ToggleButton btn = (ToggleButton) selected;
+            switch (btn.getText()) {
+            case "Easy"         -> descArea.setText("Insert Easy Description");
+            case "Intermediate" -> descArea.setText("Insert Intermediate Description");
+            case "Hard"         -> descArea.setText("Insert Hard Description");
+            }
+        }
     }
+
+
     
 }

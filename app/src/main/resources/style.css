@@ -13,16 +13,22 @@
 	-fx-pref-height: 50px;
 }
 
-#easy{
+#easyToggle{
 	-fx-background-color: lightblue;
 }
 
-#intermediate{
+#intermediateToggle{
 	-fx-background-color: lightgreen;
 }
 
-#hard{
+#hardToggle{
 	-fx-background-color: red;
+}
+
+#easyToggle:selected,
+#intermediateToggle:selected,
+#hardToggle:selected {
+	-fx-background-color: grey;
 }
 
 /*hover color*/
@@ -50,7 +56,7 @@
 .answer-button {
 	-fx-font-size: 20px;
 	-fx-background-radius: 10px;
-	-fx-pref-width: 350px;
+	-fx-pref-width: 250px;
 	-fx-pref-height: 50px;
 }
 

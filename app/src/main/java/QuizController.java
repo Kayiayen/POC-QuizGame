@@ -34,7 +34,7 @@ public class QuizController {
 			System.out.println("Correct!");
 		} else {
 			System.out.println("Wrong!");
-		}
+		} //else try again or exit
 
 	}
 
