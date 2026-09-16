@@ -31,6 +31,13 @@
 	-fx-background-color: grey;
 }
 
+#answer1:selected,
+#answer2:selected,
+#answer3:selected,
+#answer4:selected {
+	-fx-background-color: grey;
+}
+
 /*hover color*/
 #play:hover,
 #settings:hover,
@@ -56,12 +63,17 @@
 .answer-button {
 	-fx-font-size: 20px;
 	-fx-background-radius: 10px;
-	-fx-pref-width: 250px;
-	-fx-pref-height: 50px;
+	/*-fx-pref-width: 70px;
+	just don't the w/h are dynamic
+	-fx-pref-height: 50px; */ 
 }
 
 .title {
 	-fx-font-size: 50px
+}
+
+.question-text {
+	-fx-font-size: 20px
 }
 
 #answer1:hover,

@@ -18,27 +18,6 @@ import javafx.fxml.FXML;
 
 public class UIController {
 	// the logic of the buttons should be implemented here
-    @FXML
-    private Button play;
-
-    @FXML
-    private Button settings;
-    
-    @FXML
-    private Button exit; 
-
-    @FXML
-    private ToggleButton easyToggle;
-
-    @FXML
-    private ToggleButton intermediateToggle;
-
-    @FXML
-    private ToggleButton hardToggle;
-
-    @FXML
-    private Button startButton;
-
     @FXML 
     private VBox settingsOverlay;
 
@@ -56,12 +35,12 @@ public class UIController {
     }
 
     @FXML
-    private void menuAction(ActionEvent event) throws IOException {
+    private void menuPressed(ActionEvent event) throws IOException {
         
         String id = ((Node) event.getSource()).getId();
         
         switch (id) {
-        case "playButton"     -> playAction(event);
+        case "playButton"     -> enterPlay(event);
         case "settingsButton" -> openSettings();
         case "settingsClose"  -> closeSettings();
         case "helpButton"     -> helpInfo();
@@ -70,7 +49,7 @@ public class UIController {
     }
 
     
-    private void playAction(ActionEvent event) throws IOException {
+    private void enterPlay(ActionEvent event) throws IOException {
         Parent difficultyRoot =
                     FXMLLoader.load(getClass().getResource("/difficulty.fxml"));
 
@@ -97,14 +76,10 @@ public class UIController {
         stage.close();
     }
 
-    @FXML
+    @FXML // this must be changed to load the scene then load the questions
     private void difficultyStart(ActionEvent event) throws IOException {
         Toggle selected = difficultyGroup.getSelectedToggle();
 
-        if (selected == null) {
-            System.out.println("Select difficulty");
-            return;
-        }
 
         String difficulty = ((ToggleButton) selected).getText();
         Scene scene = ((ToggleButton) selected).getScene();

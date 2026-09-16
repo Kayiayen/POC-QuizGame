@@ -23,7 +23,7 @@ public class Main extends Application {
 
         Parent root = loader.load();
         
-        Scene scene = new Scene(root, 800, 500);
+        Scene scene = new Scene(root);
 
         scene.getStylesheets().add(
             getClass().getResource("/style.css").toExternalForm()

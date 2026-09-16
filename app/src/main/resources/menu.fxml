@@ -15,10 +15,10 @@
 
     <VBox alignment="CENTER" spacing="20">
         <Label fx:id="title" text="QuizGame" />
-        <Button fx:id="playButton" onAction="#menuAction" styleClass="menu-button" text="Play" />
-        <Button fx:id="settingsButton" onAction="#menuAction" styleClass="menu-button" text="Settings" />
-        <Button fx:id="helpButton" onAction="#menuAction" styleClass="menu-button" text="Help" />
-        <Button fx:id="exitButton" onAction="#menuAction" styleClass="menu-button" text="Exit" />
+        <Button fx:id="playButton" onAction="#menuPressed" styleClass="menu-button" text="Play" />
+        <Button fx:id="settingsButton" onAction="#menuPressed" styleClass="menu-button" text="Settings" />
+        <Button fx:id="helpButton" onAction="#menuPressed" styleClass="menu-button" text="Help" />
+        <Button fx:id="exitButton" onAction="#menuPressed" styleClass="menu-button" text="Exit" />
     </VBox>
 
     <VBox fx:id="settingsOverlay" visible="false" managed="false"
@@ -35,6 +35,6 @@
                 <Slider fx:id="sfxSlider" />
             </VBox>
         </HBox>
-        <Button fx:id="settingsClose" text="Close" onAction="#menuAction" />
+        <Button fx:id="settingsClose" text="Close" onAction="#menuPressed" />
     </VBox>
 </StackPane>
