@@ -1,7 +1,6 @@
 package quiz;
 
 import java.io.IOException;
-
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Toggle;
@@ -15,11 +14,16 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.fxml.FXML;
+import javafx.scene.layout.StackPane;
+import javafx.scene.input.MouseEvent;
 
 public class UIController {
 	// the logic of the buttons should be implemented here
     @FXML 
     private VBox settingsOverlay;
+
+    @FXML
+    private StackPane helpOverlay;
 
     @FXML
     private ToggleGroup difficultyGroup = new ToggleGroup();
@@ -43,18 +47,14 @@ public class UIController {
         case "playButton"     -> enterPlay(event);
         case "settingsButton" -> openSettings();
         case "settingsClose"  -> closeSettings();
-        case "helpButton"     -> helpInfo();
+        case "helpButton"     -> helpShow();
         case "exitButton"     -> exitGame(event);
         }
     }
 
     
     private void enterPlay(ActionEvent event) throws IOException {
-        Parent difficultyRoot =
-                    FXMLLoader.load(getClass().getResource("/difficulty.fxml"));
-
-                Scene scene = ((Button) event.getSource()).getScene();
-                scene.setRoot(difficultyRoot);
+        Navigation.goTo("/difficulty.fxml");
     }
 
     private void openSettings() {
@@ -67,8 +67,9 @@ public class UIController {
         settingsOverlay.setManaged(false);
     }
 
-        private void helpInfo () {
-       System.out.println("Insert Game Mechanics");
+    private void helpShow () {
+        helpOverlay.setVisible(true);
+        helpOverlay.setManaged(true);
     }
     
     private void exitGame (ActionEvent event) {
@@ -82,17 +83,11 @@ public class UIController {
 
 
         String difficulty = ((ToggleButton) selected).getText();
-        Scene scene = ((ToggleButton) selected).getScene();
-
-            String fxml = switch (difficulty) {
-            case "Easy"         -> "/quiz.fxml";
-            case "Intermediate" -> "/Intermediate-ui.fxml";
-            case "Hard"         -> "/hard-ui.fxml";
-            default             -> null;
-            };
-
-        if (fxml != null) {
-        scene.setRoot(FXMLLoader.load(getClass().getResource(fxml)));
+            switch (difficulty) {
+            case "Easy"         -> Navigation.goTo("/quiz.fxml");
+            case "Intermediate" -> System.out.println("Load Intermediate");
+            case "Hard"         -> System.out.println("Load Hard");
+            default             -> System.out.println("Please Select Difficulty");
         }
     }
 
@@ -110,5 +105,14 @@ public class UIController {
     }
 
 
-    
+    @FXML
+    void helpClose(MouseEvent event) {
+        helpOverlay.setVisible(false);
+        helpOverlay.setManaged(false);
+    }
+
+    @FXML
+    void backMenu(ActionEvent event) throws IOException {
+        Navigation.goTo("/menu.fxml");
+    }
 }

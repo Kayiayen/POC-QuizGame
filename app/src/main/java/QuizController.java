@@ -1,16 +1,25 @@
 package quiz;
 
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Toggle;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.application.Platform;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.StackPane;
+import javafx.scene.Node;
 
 
 
@@ -20,16 +29,16 @@ public class QuizController {
 	private Question currentQuestion;
 
 	@FXML
-    private ToggleButton answer1;
+    private Button answer1;
 
     @FXML
-    private ToggleButton answer2;
+    private Button answer2;
 
     @FXML
-    private ToggleButton answer3;
+    private Button answer3;
 
     @FXML
-    private ToggleButton answer4;
+    private Button answer4;
 
 	@FXML 
 	private Label questionText;
@@ -37,51 +46,66 @@ public class QuizController {
 	@FXML
 	private VBox optionsOverlay;
 
-	@FXML // load the questions here?
-	public void initialize(){
-		currentQuestion = new Question(
-		"What is 2 + 2?","D"
-		);
-
-		questionText.setText(currentQuestion.getText());
-	}
+	@FXML
+    private StackPane helpOverlay;
 
 	@FXML
-    private ToggleGroup toggleAnswerGroup = new ToggleGroup();
+	public void initialize() {
+    	currentQuestion = new Question("Why did David want to build a house for God in 2 Samuel 7?", "B");
+    	questionText.setText(currentQuestion.getText());
 
-    @FXML // the ui logic of identifying the selected answer
-    void submitAnswer(MouseEvent event) {
-        Toggle selected = toggleAnswerGroup.getSelectedToggle();
+		Platform.runLater(() -> optionsOverlay.getScene().setOnKeyPressed(this::showOptions));
+	}
 
-        if (selected == null) {
-            System.out.println("Please Select an Answer");
-            return;
+    @FXML
+	private void submitAnswer(ActionEvent event) {
+		Button clickedButton = (Button)
+		event.getSource();
 
-        }
+		String clickedAnswer = clickedButton.getText();
+	
 
-
-        String clickedAnswer = ((ToggleButton) selected).getText();
-		
 		if (clickedAnswer.equals(currentQuestion.getAnswer())) {
-		
-		System.out.println("Correct!");
+
+			System.out.println("Correct!");
 		} else {
-		System.out.println("Wrong!");
+			System.out.println("Wrong!");
 		}
+
+	}
+
+	private void showOptions(KeyEvent event) {
+    	if (event.getCode() == KeyCode.ESCAPE) {
+		optionsOverlay.setVisible(true);
+        optionsOverlay.setManaged(true);
+    	}
+	}
+
+    @FXML
+    private void closePressed(MouseEvent event) {
+        optionsOverlay.setVisible(false);
+        optionsOverlay.setManaged(false);
     }
 
-	@FXML // todo when pressed escape show options 
-	void showOptions(KeyEvent event) {
-		if(event.getCode() == KeyCode.ESCAPE) {
-    			System.out.println("You have escaped");
-    			optionsOverlay.setVisible(false);
-        		optionsOverlay.setManaged(false);
-    	}
+
+    @FXML
+    void backDifficulty(MouseEvent event) throws IOException {
+			Navigation.goTo("/difficulty.fxml");
     }
 
     @FXML
-    private void closePressed() {
-        optionsOverlay.setVisible(false);
+   	void helpShow (MouseEvent event) {
+   		optionsOverlay.setVisible(false);
         optionsOverlay.setManaged(false);
+        helpOverlay.setVisible(true);
+        helpOverlay.setManaged(true);
+    }
+
+    @FXML
+    void helpClose(MouseEvent event) {
+        helpOverlay.setVisible(false);
+        helpOverlay.setManaged(false);
+        optionsOverlay.setVisible(true);
+        optionsOverlay.setManaged(true);
     }
 }

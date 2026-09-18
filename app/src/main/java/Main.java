@@ -1,42 +1,38 @@
 package quiz;
 
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    private static Stage primaryStage;
+
     @Override
-    public void start(Stage stage) throws Exception{
+    public void start(Stage stage) throws Exception {
+        primaryStage = stage;           
 
-        FXMLLoader loader = new FXMLLoader(
-            getClass().getResource("/menu.fxml"));
-
-        Parent root = loader.load();
-        
+        Parent root = FXMLLoader.load(getClass().getResource("/menu.fxml"));
         Scene scene = new Scene(root);
-
         scene.getStylesheets().add(
             getClass().getResource("/style.css").toExternalForm()
         );
 
         stage.setTitle("Quiz Game");
         stage.setScene(scene);
+        stage.setWidth(800);
+        stage.setHeight(500);
         stage.setResizable(false);
         stage.show();
     }
 
+    public static Stage getStage() {     
+        return primaryStage;
+    }
+
     public static void main(String[] args) {
         launch(args);
-
     }
 }

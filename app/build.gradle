@@ -15,3 +15,7 @@ javafx {
     version = '21.0.12'
     modules = ['javafx.controls', 'javafx.fxml']
 }
+
+run {
+    jvmArgs = ['-Dprism.forceGPU=true']
+}
