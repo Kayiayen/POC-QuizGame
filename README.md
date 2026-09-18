@@ -6,7 +6,7 @@
 2. UI Design
 3. Animations / Transitions
 4. Quiz Logic
-5. Question parser
-6. Question file format
+5. ~~Question parser~~
+6. ~~Question file format~~
 
 
