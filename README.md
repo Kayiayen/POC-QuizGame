@@ -2,10 +2,10 @@
 
 **TO DO**
 
-1. Buttons Functionality
+1. ~~Buttons Functionality~~
 2. UI Design
-3. Animations / Transitions
-4. Quiz Logic
+3. Animations / Transitions (partial?)
+4. ~~Quiz Logic~~
 5. ~~Question parser~~
 6. ~~Question file format~~
 
