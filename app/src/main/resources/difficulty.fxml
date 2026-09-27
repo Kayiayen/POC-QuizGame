@@ -13,9 +13,9 @@
          <children>
             <VBox alignment="CENTER" spacing="20">
                <children>
-                  <Label fx:id="title" text="Select Difficulty" />
+                  <Label fx:id="title" text="Select Difficulty" styleClass="title" />
                   <JFXButton fx:id="easyToggle" buttonType="RAISED" onAction="#difficultySelected" styleClass="difficulty-button" text="Easy" />
-                  <JFXButton fx:id="intermediateToggle" buttonType="RAISED" onAction="#difficultySelected" styleClass="difficulty-button" text="Intermediate" />
+                  <JFXButton fx:id="intermediateToggle" buttonType="RAISED" onAction="#difficultySelected" styleClass="difficulty-button" text="Medium" />
                   <JFXButton fx:id="hardToggle" buttonType="RAISED" onAction="#difficultySelected" styleClass="difficulty-button" text="Hard" />
                </children>
             </VBox>

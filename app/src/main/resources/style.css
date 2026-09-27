@@ -9,6 +9,10 @@
     -fx-background-color: lightblue;
 }
 
+.menu-button:hover {
+    -fx-background-color: #7EC8E3;
+}
+
 /* =========================================================
    Difficulty screen
    ========================================================= */
@@ -35,16 +39,13 @@
 /* =========================================================
    Titles / text
    ========================================================= */
-#title {
-    -fx-font-size: 50px;
-}
 
 .title {
     -fx-font-size: 50px;
 }
 
 .question-text {
-    -fx-font-size: 50px;
+    -fx-font-size: 40px;
 }
 
 .status-label {
@@ -52,24 +53,9 @@
 }
 
 .results-text {
-    -fx-font-size: 18px;
+    -fx-font-size: 20px;
     -fx-text-fill: white;
     -fx-text-alignment: center;
-}
-
-/* =========================================================
-   Menu button hover / pressed
-   ========================================================= */
-#play:hover,
-#settings:hover,
-#exit:hover {
-    -fx-background-color: grey;
-}
-
-#play:pressed,
-#settings:pressed,
-#exit:pressed {
-    -fx-background-color: red;
 }
 
 /* =========================================================
@@ -134,6 +120,8 @@
     -fx-text-fill: white;
     -fx-background-color: #444444;
     -fx-background-radius: 10px;
+    -fx-min-width: 100px;
+    -fx-min-height: 25px;
 }
 
 .overlay-button:hover {

@@ -42,11 +42,16 @@ public class UIController {
         String id = ((javafx.scene.Node) event.getSource()).getId();
 
         switch (id) {
-            case "playButton"     -> enterPlay(event);
-            case "settingsButton" -> openSettings();
-            case "settingsClose"  -> closeSettings();
-            case "helpButton"     -> helpShow();
-            case "exitButton"     -> exitGame(event);
+            case "playButton"     -> {enterPlay(event);
+                                        Sfx.play("click-sfx");}
+            case "settingsButton" -> {openSettings();
+                                        Sfx.play("click-sfx");}
+            case "settingsClose"  -> {closeSettings();
+                                        Sfx.play("click-sfx");}
+            case "helpButton"     -> {helpShow();
+                                        Sfx.play("click-sfx");}
+            case "exitButton"     -> {exitGame(event);
+                                        Sfx.play("click-sfx");}
         }
     }
 
@@ -83,11 +88,13 @@ public class UIController {
     void helpClose(ActionEvent event) {
         helpOverlay.setVisible(false);
         helpOverlay.setManaged(false);
+        Sfx.play("click-sfx");
     }
 
     @FXML
     void backMenu(ActionEvent event) throws IOException {
         Navigation.goTo("/menu.fxml");
+        Sfx.play("click-sfx");
     }
 
     // ===================== Difficulty selection =====================
@@ -114,15 +121,20 @@ public class UIController {
 
     private void updateDescription(String difficulty) {
         switch (difficulty) {
-            case "Easy"         -> descArea.setText("Insert Easy Description");
-            case "Intermediate" -> descArea.setText("Insert Intermediate Description");
-            case "Hard"         -> descArea.setText("Insert Hard Description");
-            default             -> descArea.setText("");
+            case "Easy"         -> {descArea.setText("Insert Easy Description");
+                                    Sfx.play("click-sfx");}
+            case "Medium"       -> {descArea.setText("Insert Medium Description");
+                                    Sfx.play("click-sfx");}
+            case "Hard"         -> {descArea.setText("Insert Hard Description");
+                                    Sfx.play("click-sfx");}
+            default             -> {descArea.setText("");
+                                    Sfx.play("click-sfx");}
         }
     }
 
     @FXML
     private void difficultyStart(ActionEvent event) throws IOException {
+        Sfx.play("click-sfx");
         if (selectedDifficulty == null) {
             descArea.setText("Please Select Difficulty");
             return;

@@ -22,48 +22,54 @@ public class QuizController {
     // The "A. " prefix is added by the UI when displaying, not stored here.
 
     private static final String[][] EASY_QUESTIONS = {
-        {" 1 + 1 = ?", "2", "5", "45", "1"},
-        {" 2 x 2 = ?", "2", "12", "4", "6"},
-        {" 2 + 4 = ?", "12", "10", "6", "34"},
-        {" 3 + 1 = ?", "14", "8", "9", "4"},
-        {" 1 + 2 = ?", "1", "3", "5", "7"},
-        {" 5 + 3 = ?", "6", "7", "8", "9"},
-        {" 10 - 4 = ?", "5", "6", "7", "8"},
-        {" 3 x 3 = ?", "6", "7", "8", "9"},
-        {" 8 - 2 = ?", "4", "5", "6", "7"},
-        {" 4 + 5 = ?", "7", "8", "9", "10"}
+        {"What does IT stand for?", "Internet Technology", "Information Technology", "Information Transfer", "Internet Transfer"},
+        {"What is the capital of the Philippines?", "Cebu", "Manila", "Davao", "Baguio"},
+        {"What organ pumps blood?", "Brain", "Lungs", "Heart", "Stomach"},
+        {"What gas do humans need to breathe?", "Oxygen", "Helium", "Carbon", "Hydrogen"},
+        {"Which device is mainly used to type text?", "Mouse", "Printer", "Monitor", "Keyboard"},
+        {"What is the opposite of hot?", "Cold", "Warm", "Dry", "Bright"},
+        {"What is the internet?", "A computer part", "A global network", "A file", "A keyboard"},
+        {"What do bees produce?", "Milk", "Honey", "Juice", "Oil"},
+        {"What is 5 x 4?", "15", "45", "20", "30"},
+        {"Which is commonly used to make presentations?", "Calculator", "Powerpoint", "Paint", "Notepad"}
     };
 
     private static final String[][] MEDIUM_QUESTIONS = {
-        {" What is the capital city of the Philippines?", "Cebu City", "Manila", "Davao City", "Quezon City"},
-        {" Which city is known as the 'Queen City of the South'?", "Cebu City", "Manila", "Baguio City", "Iloilo City"},
-        {" Which city is known for its cool climate and is called the 'Summer Capital of the Philippines'?", "Tagaytay City", "Baguio City", "Davao City", "Pasay City"},
-        {" Which city is the largest city in Mindanao by population?", "Cagayan de Oro", "General Santos", "Davao City", "Zamboanga City"},
-        {" Which city is famous for the Chocolate Hills nearby?", "Tagbilaran City", "Cebu City", "Iloilo City", "Vigan City"},
-        {" Which city is known for the Dinagyang Festival?", "Bacolod City", "Iloilo City", "Cebu City", "Manila"},
-        {" Which city is famous for the MassKara Festival?", "Bacolod City", "Davao City", "Baguio City", "Pasig City"},
-        {" Which city is famous for its historic Calle Crisologo?", "Vigan City", "Laoag City", "Naga City", "Legazpi City"},
-        {" Which city is known as the 'Durian Capital of the Philippines'?", "Davao City", "Cagayan de Oro", "General Santos", "Zamboanga City"},
-        {" Which city is famous for the Mayon Volcano nearby?", "Legazpi City", "Baguio City", "Batangas City", "Tagaytay City"}
+        {"What process changes water into vapor?", "Freezing", "Melting", "Evaporation", "Condensation"},
+        {"What does LAN stand for?", "Local Access Network", "Local Area Network", "Local Application Number", "Long Area Node"},
+        {"Which language is commonly used for web page styling?", "CSS", "SQL", "Python", "Java"},
+        {"What do red blood cells carry?", "Oxygen", "Food", "Water", "Bones"},
+        {"What is malware?", "Computer hardware", "A database", "A browser", "Harmful software"},
+        {"Which planet is famous for its Great Red Spot?", "Mars", "Jupiter", "Saturn", "Uranus"},
+        {"Which vitamin is primarily produced by the skin in response to sunlight?", "Vitamin A", "Vitamin B12", "Vitamin C", "Vitamin D"},
+        {"Which language has the most native speakers worldwide?", "English", "Spanish", "Mandarin Chinese", "French"},
+        {"What is cloud storage?", "Online file storage", "Physical storage only", "Computer memory", "A type of keyboard"},
+        {"Which instrument measures wind speed?", "Barometer", "Anemometer", "Thermometer", "Seismometer"}
     };
 
     private static final String[][] HARD_QUESTIONS = {
-        {" What is the chemical symbol for Gold?", "Ag", "Au", "Gd", "Go"},
-        {" Which planet has the most moons?", "Earth", "Mars", "Saturn", "Venus"},
-        {" What is the largest organ in the human body?", "Heart", "Liver", "Brain", "Skin"},
-        {" What gas do plants absorb during photosynthesis?", "Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"},
-        {" What is the hardest natural substance?", "Iron", "Diamond", "Gold", "Quartz"},
-        {" Which part of the cell contains genetic material?", "Nucleus", "Ribosome", "Cytoplasm", "Cell Wall"},
-        {" What is the closest star to Earth?", "Sirius", "Polaris", "Alpha Centauri", "The Sun"},
-        {" Which blood cells help fight infections?", "Red Blood Cells", "White Blood Cells", "Platelets", "Plasma"},
-        {" What force keeps planets in orbit around the Sun?", "Friction", "Magnetism", "Gravity", "Electricity"},
-        {" What is the process by which water changes from liquid to gas?", "Condensation", "Freezing", "Melting", "Evaporation"}
+        {"Which active Philippine volcano had a massive 1991 eruption?", "Taal", "Mayon", "Mount Pinatubo", "Mount Kanlaon"},
+        {"In what year did Vincent van Gogh paint The Starry Night?", "1888", "1889", "1890", "1891"},
+        {"Who was Jose Rizal's eldest sister?", "Saturnina", "Paciano", "Narcisa", "Soledad"},
+        {"How many teeth does an adult human typically have?", "30", "31", "32", "33"},
+        {"Which African country was formerly known as Abyssinia?", "Ghana", "Zimbabwe", "Ethiopia", "Sudan"},
+        {"What is the most abundant gas in Earth's atmosphere?", "Nitrogen", "Oxygen", "Carbon Dioxide", "Argon"},
+        {"What is the main functional unit of the human liver?", "Nephron", "Lobule", "Alveolus", "Islet"},
+        {"What is the capital of New Zealand?", "Auckland", "Christchurch", "Dunedin", "Wellington"},
+        {"What is the SI unit of magnetic flux?", "Tesla", "Henry", "Weber", "Lumen"},
+        {"What is the loopback IPv4 address for a local host?", "192.168.1.1", "127.0.0.1", "10.0.0.1", "255.255.255.255"}
     };
 
     // Correct choice index: 0=A, 1=B, 2=C, 3=D
-    private static final int[] EASY_ANSWERS   = {0, 2, 2, 3, 1, 2, 1, 3, 2, 2};
-    private static final int[] MEDIUM_ANSWERS = {1, 0, 1, 2, 0, 1, 0, 0, 0, 0};
-    private static final int[] HARD_ANSWERS   = {1, 2, 3, 2, 1, 0, 3, 1, 2, 3};
+    private static final int[] EASY_ANSWERS   = {1, 1, 2, 0, 3, 0, 1, 1, 2, 1};
+    private static final int[] MEDIUM_ANSWERS = {2, 1, 0, 0, 3, 1, 3, 2, 0, 1};
+    private static final int[] HARD_ANSWERS   = {2, 1, 0, 2, 2, 0, 1, 3, 2, 1};
+
+    // ===================== Per-difficulty time =====================
+    // Merged from the Swing QUIZGAMETESTER: harder questions get less time.
+    private static final int EASY_SECONDS   = 30;
+    private static final int MEDIUM_SECONDS = 20;
+    private static final int HARD_SECONDS   = 10;
 
     // ===================== State =====================
     private String difficulty = "Easy";
@@ -73,11 +79,8 @@ public class QuizController {
     private Timeline timer;
     private JFXButton[] answerButtons;
 
-    private static final int SECONDS_PER_QUESTION = 30;
-    private static final long FEEDBACK_MILLIS = 2000;
-    private static final String[] LETTERS = { "A. ", "B. ", "C. ", "D. " };
+    private static final long FEEDBACK_MILLIS = 1500;
 
-    // CSS classes for inline per-question feedback
     private static final String CSS_CORRECT = "answer-correct";
     private static final String CSS_WRONG   = "answer-wrong";
 
@@ -99,25 +102,23 @@ public class QuizController {
     @FXML
     public void initialize() {
         answerButtons = new JFXButton[]{ answer1, answer2, answer3, answer4 };
-    
+
         for (int i = 0; i < answerButtons.length; i++) {
             answerButtons[i].setUserData(i);
-            answerButtons[i].setRipplerFill(javafx.scene.paint.Color.TRANSPARENT); // optional
         }
-    
-        // Wire ESC once the root is attached to a Scene. Navigation's fade
-        // attaches the root ~220ms after initialize(), so we can't do this
-        // synchronously or via Platform.runLater().
+
+        // Wire ESC once the root is attached to a Scene.
+        // Navigation's fade attaches the root ~220ms after initialize(),
+        // so a scene property listener is required here (not runLater).
         questionText.sceneProperty().addListener((obs, oldScene, newScene) -> {
             if (newScene != null) {
                 newScene.getRoot().addEventFilter(KeyEvent.KEY_PRESSED, this::handleKey);
             }
-       });
-    
+        });
+
         loadQuestion();
     }
 
-    /** Called by UIController.difficultyStart() after loading quiz.fxml. */
     public void setDifficulty(String difficulty) {
         this.difficulty = difficulty;
         this.currentIndex = 0;
@@ -142,6 +143,15 @@ public class QuizController {
         };
     }
 
+    /** Merged from Swing's per-difficulty startTimer(10/20/30). */
+    private int secondsForDifficulty() {
+        return switch (difficulty) {
+            case "Intermediate", "Medium" -> MEDIUM_SECONDS;
+            case "Hard" -> HARD_SECONDS;
+            default -> EASY_SECONDS;
+        };
+    }
+
     // ===================== Question flow =====================
     private void loadQuestion() {
         String[][] qs = questions();
@@ -152,15 +162,17 @@ public class QuizController {
         }
 
         String[] q = qs[currentIndex];
-        questionText.setText(q[0]);
+
+        // Merged from Swing: show "1. <question>", "2. <question>", ...
+        questionText.setText((currentIndex + 1) + ". " + q[0]);
 
         for (int i = 0; i < answerButtons.length; i++) {
-            answerButtons[i].setText(LETTERS[i] + q[i + 1]); // +1 skips question text
+            answerButtons[i].setText(q[i + 1]);
             answerButtons[i].setDisable(false);
         }
 
         updateScoreLabel();
-        startTimer(SECONDS_PER_QUESTION);
+        startTimer(secondsForDifficulty());
     }
 
     private void startTimer(int seconds) {
@@ -175,7 +187,6 @@ public class QuizController {
 
             if (timeLeft <= 0) {
                 timer.stop();
-                // Timeout: no color feedback, advance straight away.
                 advance();
             }
         }));
@@ -185,29 +196,26 @@ public class QuizController {
 
     @FXML
     private void submitAnswer(ActionEvent event) {
-        // Stop the timer so the player isn't penalized during the feedback pause.
         if (timer != null) timer.stop();
 
         JFXButton clicked = (JFXButton) event.getSource();
         int chosen = (int) clicked.getUserData();
         int correctIndex = answers()[currentIndex];
 
-        // Disable all four buttons immediately — no double-click allowed.
         for (JFXButton b : answerButtons) b.setDisable(true);
 
-        // Inline visual feedback (CSS classes; no popup, no overlay, no modal).
         if (chosen == correctIndex) {
             score++;
             clicked.getStyleClass().add(CSS_CORRECT);
+            Sfx.play("correct-sfx");
         } else {
             clicked.getStyleClass().add(CSS_WRONG);
             answerButtons[correctIndex].getStyleClass().add(CSS_CORRECT);
+            Sfx.play("wrong-sfx");
         }
 
-        // Score reflects the click right away.
         updateScoreLabel();
 
-        // Keep colors visible ~@x ms, then clean up and move on.
         Timeline feedback = new Timeline(new KeyFrame(
             Duration.millis(FEEDBACK_MILLIS),
             e -> {
@@ -218,7 +226,6 @@ public class QuizController {
         feedback.play();
     }
 
-    /** Remove any inline feedback classes from all four answer buttons. */
     private void clearFeedbackStyles() {
         for (JFXButton b : answerButtons) {
             b.getStyleClass().removeAll(CSS_CORRECT, CSS_WRONG);
@@ -249,6 +256,7 @@ public class QuizController {
 
     @FXML
     private void playAgain(ActionEvent event) {
+        Sfx.play("click-sfx");
         resultsOverlay.setVisible(false);
         resultsOverlay.setManaged(false);
         score = 0;
@@ -258,12 +266,19 @@ public class QuizController {
 
     @FXML
     private void resultsToMenu(ActionEvent event) throws IOException {
+        Sfx.play("click-sfx");
         Navigation.goTo("/menu.fxml");
     }
 
     // ===================== Overlays =====================
     private void handleKey(KeyEvent event) {
         if (event.getCode() == KeyCode.ESCAPE) {
+            if (resultsOverlay.isVisible()) return;
+            if (helpOverlay.isVisible()) {
+                helpClose(null);
+                return;
+            }
+            Sfx.play("click-sfx");
             optionsOverlay.setVisible(true);
             optionsOverlay.setManaged(true);
         }
@@ -271,12 +286,14 @@ public class QuizController {
 
     @FXML
     private void closePressed(ActionEvent event) {
+        Sfx.play("click-sfx");
         optionsOverlay.setVisible(false);
         optionsOverlay.setManaged(false);
     }
 
     @FXML
     private void helpShow(ActionEvent event) {
+        Sfx.play("click-sfx");
         optionsOverlay.setVisible(false);
         optionsOverlay.setManaged(false);
         helpOverlay.setVisible(true);
@@ -285,6 +302,7 @@ public class QuizController {
 
     @FXML
     private void helpClose(ActionEvent event) {
+        Sfx.play("click-sfx");
         helpOverlay.setVisible(false);
         helpOverlay.setManaged(false);
         optionsOverlay.setVisible(true);
@@ -294,6 +312,7 @@ public class QuizController {
     // ===================== Navigation =====================
     @FXML
     private void backDifficulty(ActionEvent event) throws IOException {
+        Sfx.play("click-sfx");
         if (timer != null) timer.stop();
         Navigation.goTo("/difficulty.fxml");
     }

@@ -30,14 +30,14 @@
                <children>
                   <VBox alignment="CENTER_LEFT" maxHeight="300.0" maxWidth="300.0" spacing="20.0">
                      <children>
-                        <JFXButton fx:id="answer1" buttonType="RAISED" maxWidth="Infinity" onAction="#submitAnswer" styleClass="answer-button" text="A" wrapText="true" />
-                        <JFXButton fx:id="answer2" buttonType="RAISED" maxWidth="Infinity" onAction="#submitAnswer" styleClass="answer-button" text="B" wrapText="true" />
+                        <JFXButton fx:id="answer1" buttonType="RAISED" maxWidth="Infinity" onAction="#submitAnswer" styleClass="answer-button" wrapText="true" />
+                        <JFXButton fx:id="answer2" buttonType="RAISED" maxWidth="Infinity" onAction="#submitAnswer" styleClass="answer-button" wrapText="true" />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER_LEFT" maxHeight="300.0" maxWidth="300.0" spacing="20">
                      <children>
-                        <JFXButton fx:id="answer3" buttonType="RAISED" maxWidth="Infinity" onAction="#submitAnswer" styleClass="answer-button" text="C" wrapText="true" />
-                        <JFXButton fx:id="answer4" buttonType="RAISED" maxWidth="Infinity" onAction="#submitAnswer" styleClass="answer-button" text="D" wrapText="true" />
+                        <JFXButton fx:id="answer3" buttonType="RAISED" maxWidth="Infinity" onAction="#submitAnswer" styleClass="answer-button" wrapText="true" />
+                        <JFXButton fx:id="answer4" buttonType="RAISED" maxWidth="Infinity" onAction="#submitAnswer" styleClass="answer-button" wrapText="true" />
                      </children>
                   </VBox>
                </children>
@@ -78,10 +78,10 @@
       <!-- ============ Help overlay ============ -->
       <StackPane fx:id="helpOverlay" styleClass="overlay-bg" visible="false">
          <children>
-            <VBox alignment="CENTER" maxWidth="300.0" spacing="20.0">
+            <VBox alignment="CENTER" maxWidth="500.0" spacing="20.0">
                <children>
                   <Label styleClass="overlay-text" text="Help" />
-                  <TextArea editable="false" prefHeight="300.0" text="Answer each question by clicking A/B/C/D.&#10;Each question has a 30-second limit." />
+                  <TextArea editable="false" prefHeight="300.0" text="Game Rules:&#10;&#10;1. Choose difficulty — pick Easy, Medium, or Hard before starting.&#10;2. Answer each question — choose the correct option for every question.&#10;3. Beat the timer — answer before the timer runs out.&#10;4. Earn points — one point per correct answer.&#10;5. Finish the quiz — complete all questions and check your final score.&#10;&#10;Navigation:&#10;&#10;Press ESCAPE to show the game options." />
                   <JFXButton buttonType="RAISED" onAction="#helpClose" styleClass="overlay-button" text="Close" />
                </children>
             </VBox>

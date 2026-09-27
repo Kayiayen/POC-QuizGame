@@ -11,7 +11,7 @@
 <StackPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.UIController">
 
     <VBox alignment="CENTER" spacing="20">
-        <Label fx:id="title" text="Simple Quiz Game" />
+        <Label fx:id="title" text="Simple Quiz Game" styleClass="title" />
         <JFXButton fx:id="playButton" buttonType="RAISED" onAction="#menuPressed" styleClass="menu-button" text="Play" />
         <JFXButton fx:id="settingsButton" buttonType="RAISED" onAction="#menuPressed" styleClass="menu-button" text="Settings" />
         <JFXButton fx:id="helpButton" buttonType="RAISED" onAction="#menuPressed" styleClass="menu-button" text="Help" />
@@ -37,11 +37,11 @@
 
     <StackPane fx:id="helpOverlay" styleClass="overlay-bg" visible="false">
         <children>
-            <VBox alignment="CENTER" maxWidth="300.0" spacing="20.0">
+            <VBox alignment="CENTER" maxWidth="500.0" spacing="20.0">
                 <children>
                     <Label styleClass="overlay-text" text="Help" />
-                    <TextArea editable="false" prefHeight="300.0" text="Insert Help Here...&#10;Pls" />
-                    <JFXButton mnemonicParsing="false" buttonType="RAISED" onAction="#helpClose" styleClass="overlay-button" text="Close" />
+                    <TextArea editable="false" prefHeight="300.0" text="Game Rules:&#10;&#10;1. Choose difficulty — pick Easy, Medium, or Hard before starting.&#10;2. Answer each question — choose the correct option for every question.&#10;3. Beat the timer — answer before the timer runs out.&#10;4. Earn points — one point per correct answer.&#10;5. Finish the quiz — complete all questions and check your final score.&#10;&#10;Navigation:&#10;&#10;Press ESCAPE to show the game options." />
+                    <JFXButton buttonType="RAISED" mnemonicParsing="false" onAction="#helpClose" styleClass="overlay-button" text="Close" />
                 </children>
             </VBox>
         </children>
