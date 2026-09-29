@@ -12,7 +12,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        primaryStage = stage;           
+        primaryStage = stage;
 
         Parent root = FXMLLoader.load(getClass().getResource("/menu.fxml"));
         Scene scene = new Scene(root);
@@ -26,9 +26,10 @@ public class Main extends Application {
         stage.setHeight(500);
         stage.setResizable(false);
         stage.show();
+        AudioManager.startMusic("bgm");
     }
 
-    public static Stage getStage() {     
+    public static Stage getStage() {
         return primaryStage;
     }
 

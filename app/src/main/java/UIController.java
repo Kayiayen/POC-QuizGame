@@ -3,19 +3,18 @@ package quiz;
 import java.io.IOException;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXToggleButton;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.TextArea;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 public class UIController {
 
-    // ===================== FXML fields =====================
     @FXML private VBox settingsOverlay;
     @FXML private StackPane helpOverlay;
     @FXML private TextArea descArea;
@@ -23,35 +22,29 @@ public class UIController {
     @FXML private JFXButton easyToggle;
     @FXML private JFXButton intermediateToggle;
     @FXML private JFXButton hardToggle;
+    @FXML private JFXToggleButton musicToggle;
 
-    // ===================== State =====================
     private JFXButton[] difficultyButtons;
     private JFXButton selectedDifficulty;
 
     private static final String CSS_SELECTED = "difficulty-selected";
 
-    // ===================== Lifecycle =====================
     @FXML
     private void initialize() {
         difficultyButtons = new JFXButton[]{ easyToggle, intermediateToggle, hardToggle };
+        if (musicToggle != null) musicToggle.selectedProperty().bindBidirectional(Settings.musicOn);
     }
 
-    // ===================== Menu routing =====================
     @FXML
     private void menuPressed(ActionEvent event) throws IOException {
         String id = ((javafx.scene.Node) event.getSource()).getId();
 
         switch (id) {
-            case "playButton"     -> {enterPlay(event);
-                                        Sfx.play("click-sfx");}
-            case "settingsButton" -> {openSettings();
-                                        Sfx.play("click-sfx");}
-            case "settingsClose"  -> {closeSettings();
-                                        Sfx.play("click-sfx");}
-            case "helpButton"     -> {helpShow();
-                                        Sfx.play("click-sfx");}
-            case "exitButton"     -> {exitGame(event);
-                                        Sfx.play("click-sfx");}
+            case "playButton"     -> enterPlay(event);
+            case "settingsButton" -> openSettings();
+            case "settingsClose"  -> closeSettings();
+            case "helpButton"     -> helpShow();
+            case "exitButton"     -> exitGame(event);
         }
     }
 
@@ -81,6 +74,7 @@ public class UIController {
     private void exitGame(ActionEvent event) {
         javafx.stage.Stage stage = (javafx.stage.Stage)
             ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        AudioManager.stopAll();
         stage.close();
     }
 
@@ -88,31 +82,21 @@ public class UIController {
     void helpClose(ActionEvent event) {
         helpOverlay.setVisible(false);
         helpOverlay.setManaged(false);
-        Sfx.play("click-sfx");
     }
 
     @FXML
     void backMenu(ActionEvent event) throws IOException {
         Navigation.goTo("/menu.fxml");
-        Sfx.play("click-sfx");
     }
 
-    // ===================== Difficulty selection =====================
-    /**
-     * Simulates toggle-group behaviour on plain JFXButtons by adding/
-     * removing a CSS class. JFXButton has no :selected pseudo-class,
-     * so we drive the visual state ourselves.
-     */
     @FXML
     private void difficultySelected(ActionEvent event) {
         JFXButton clicked = (JFXButton) event.getSource();
 
-        // Clear previous selection
         for (JFXButton b : difficultyButtons) {
             b.getStyleClass().remove(CSS_SELECTED);
         }
 
-        // Mark this one selected (persists until another is clicked)
         clicked.getStyleClass().add(CSS_SELECTED);
         selectedDifficulty = clicked;
 
@@ -121,20 +105,15 @@ public class UIController {
 
     private void updateDescription(String difficulty) {
         switch (difficulty) {
-            case "Easy"         -> {descArea.setText("Insert Easy Description");
-                                    Sfx.play("click-sfx");}
-            case "Medium"       -> {descArea.setText("Insert Medium Description");
-                                    Sfx.play("click-sfx");}
-            case "Hard"         -> {descArea.setText("Insert Hard Description");
-                                    Sfx.play("click-sfx");}
-            default             -> {descArea.setText("");
-                                    Sfx.play("click-sfx");}
+            case "Easy"         -> descArea.setText("Contains common knowledge that can be considered as easy.");
+            case "Medium"       -> descArea.setText("The somewhere in between the general.");
+            case "Hard"         -> descArea.setText("Its easy...");
+            default             -> descArea.setText("");
         }
     }
 
     @FXML
     private void difficultyStart(ActionEvent event) throws IOException {
-        Sfx.play("click-sfx");
         if (selectedDifficulty == null) {
             descArea.setText("Please Select Difficulty");
             return;

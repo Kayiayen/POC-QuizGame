@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
@@ -49,22 +48,6 @@
       <VBox fx:id="optionsOverlay" alignment="CENTER" spacing="50.0" styleClass="overlay-bg" visible="false">
          <children>
             <Label styleClass="overlay-title" text="Options" />
-            <HBox alignment="CENTER" spacing="50">
-               <children>
-                  <VBox alignment="CENTER" spacing="5">
-                     <children>
-                        <Label styleClass="overlay-text" text="Music" />
-                        <Slider fx:id="musicSlider" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" spacing="5">
-                     <children>
-                        <Label styleClass="overlay-text" text="SFX" />
-                        <Slider fx:id="sfxSlider" />
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
             <HBox alignment="CENTER" spacing="20.0">
                <children>
                   <JFXButton buttonType="RAISED" onAction="#backDifficulty" styleClass="overlay-button" text="Back" />

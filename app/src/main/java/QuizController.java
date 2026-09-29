@@ -17,10 +17,6 @@ import javafx.util.Duration;
 
 public class QuizController {
 
-    // ===================== Question data =====================
-    // Row layout: [question, choiceA, choiceB, choiceC, choiceD]
-    // The "A. " prefix is added by the UI when displaying, not stored here.
-
     private static final String[][] EASY_QUESTIONS = {
         {"What does IT stand for?", "Internet Technology", "Information Technology", "Information Transfer", "Internet Transfer"},
         {"What is the capital of the Philippines?", "Cebu", "Manila", "Davao", "Baguio"},
@@ -60,18 +56,14 @@ public class QuizController {
         {"What is the loopback IPv4 address for a local host?", "192.168.1.1", "127.0.0.1", "10.0.0.1", "255.255.255.255"}
     };
 
-    // Correct choice index: 0=A, 1=B, 2=C, 3=D
     private static final int[] EASY_ANSWERS   = {1, 1, 2, 0, 3, 0, 1, 1, 2, 1};
     private static final int[] MEDIUM_ANSWERS = {2, 1, 0, 0, 3, 1, 3, 2, 0, 1};
     private static final int[] HARD_ANSWERS   = {2, 1, 0, 2, 2, 0, 1, 3, 2, 1};
 
-    // ===================== Per-difficulty time =====================
-    // Merged from the Swing QUIZGAMETESTER: harder questions get less time.
     private static final int EASY_SECONDS   = 30;
     private static final int MEDIUM_SECONDS = 20;
     private static final int HARD_SECONDS   = 10;
 
-    // ===================== State =====================
     private String difficulty = "Easy";
     private int currentIndex = 0;
     private int score = 0;
@@ -84,7 +76,6 @@ public class QuizController {
     private static final String CSS_CORRECT = "answer-correct";
     private static final String CSS_WRONG   = "answer-wrong";
 
-    // ===================== FXML fields =====================
     @FXML private JFXButton answer1;
     @FXML private JFXButton answer2;
     @FXML private JFXButton answer3;
@@ -98,7 +89,6 @@ public class QuizController {
     @FXML private StackPane resultsOverlay;
     @FXML private Label resultsLabel;
 
-    // ===================== Lifecycle =====================
     @FXML
     public void initialize() {
         answerButtons = new JFXButton[]{ answer1, answer2, answer3, answer4 };
@@ -107,9 +97,6 @@ public class QuizController {
             answerButtons[i].setUserData(i);
         }
 
-        // Wire ESC once the root is attached to a Scene.
-        // Navigation's fade attaches the root ~220ms after initialize(),
-        // so a scene property listener is required here (not runLater).
         questionText.sceneProperty().addListener((obs, oldScene, newScene) -> {
             if (newScene != null) {
                 newScene.getRoot().addEventFilter(KeyEvent.KEY_PRESSED, this::handleKey);
@@ -126,7 +113,6 @@ public class QuizController {
         loadQuestion();
     }
 
-    // ===================== Difficulty lookup =====================
     private String[][] questions() {
         return switch (difficulty) {
             case "Intermediate", "Medium" -> MEDIUM_QUESTIONS;
@@ -143,7 +129,6 @@ public class QuizController {
         };
     }
 
-    /** Merged from Swing's per-difficulty startTimer(10/20/30). */
     private int secondsForDifficulty() {
         return switch (difficulty) {
             case "Intermediate", "Medium" -> MEDIUM_SECONDS;
@@ -152,7 +137,6 @@ public class QuizController {
         };
     }
 
-    // ===================== Question flow =====================
     private void loadQuestion() {
         String[][] qs = questions();
 
@@ -163,7 +147,6 @@ public class QuizController {
 
         String[] q = qs[currentIndex];
 
-        // Merged from Swing: show "1. <question>", "2. <question>", ...
         questionText.setText((currentIndex + 1) + ". " + q[0]);
 
         for (int i = 0; i < answerButtons.length; i++) {
@@ -207,11 +190,9 @@ public class QuizController {
         if (chosen == correctIndex) {
             score++;
             clicked.getStyleClass().add(CSS_CORRECT);
-            Sfx.play("correct-sfx");
         } else {
             clicked.getStyleClass().add(CSS_WRONG);
             answerButtons[correctIndex].getStyleClass().add(CSS_CORRECT);
-            Sfx.play("wrong-sfx");
         }
 
         updateScoreLabel();
@@ -241,7 +222,6 @@ public class QuizController {
         scoreLabel.setText("Score: " + score + " / " + questions().length);
     }
 
-    // ===================== End of quiz =====================
     private void endGame() {
         if (timer != null) timer.stop();
 
@@ -256,7 +236,6 @@ public class QuizController {
 
     @FXML
     private void playAgain(ActionEvent event) {
-        Sfx.play("click-sfx");
         resultsOverlay.setVisible(false);
         resultsOverlay.setManaged(false);
         score = 0;
@@ -266,11 +245,9 @@ public class QuizController {
 
     @FXML
     private void resultsToMenu(ActionEvent event) throws IOException {
-        Sfx.play("click-sfx");
         Navigation.goTo("/menu.fxml");
     }
 
-    // ===================== Overlays =====================
     private void handleKey(KeyEvent event) {
         if (event.getCode() == KeyCode.ESCAPE) {
             if (resultsOverlay.isVisible()) return;
@@ -278,7 +255,6 @@ public class QuizController {
                 helpClose(null);
                 return;
             }
-            Sfx.play("click-sfx");
             optionsOverlay.setVisible(true);
             optionsOverlay.setManaged(true);
         }
@@ -286,14 +262,12 @@ public class QuizController {
 
     @FXML
     private void closePressed(ActionEvent event) {
-        Sfx.play("click-sfx");
         optionsOverlay.setVisible(false);
         optionsOverlay.setManaged(false);
     }
 
     @FXML
     private void helpShow(ActionEvent event) {
-        Sfx.play("click-sfx");
         optionsOverlay.setVisible(false);
         optionsOverlay.setManaged(false);
         helpOverlay.setVisible(true);
@@ -302,17 +276,14 @@ public class QuizController {
 
     @FXML
     private void helpClose(ActionEvent event) {
-        Sfx.play("click-sfx");
         helpOverlay.setVisible(false);
         helpOverlay.setManaged(false);
         optionsOverlay.setVisible(true);
         optionsOverlay.setManaged(true);
     }
 
-    // ===================== Navigation =====================
     @FXML
     private void backDifficulty(ActionEvent event) throws IOException {
-        Sfx.play("click-sfx");
         if (timer != null) timer.stop();
         Navigation.goTo("/difficulty.fxml");
     }
