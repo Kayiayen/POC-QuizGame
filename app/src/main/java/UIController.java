@@ -106,8 +106,8 @@ public class UIController {
     private void updateDescription(String difficulty) {
         switch (difficulty) {
             case "Easy"         -> descArea.setText("Contains common knowledge that can be considered as easy.");
-            case "Medium"       -> descArea.setText("The somewhere in between the general.");
-            case "Hard"         -> descArea.setText("Its easy...");
+            case "Medium"       -> descArea.setText("The somewhere in between, The general.");
+            case "Hard"         -> descArea.setText("Can be considered as common knowledge but way more specific.");
             default             -> descArea.setText("");
         }
     }

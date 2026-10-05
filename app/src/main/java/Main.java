@@ -5,6 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import java.nio.file.Paths;
 
 public class Main extends Application {
 
@@ -26,7 +29,30 @@ public class Main extends Application {
         stage.setHeight(500);
         stage.setResizable(false);
         stage.show();
-        AudioManager.startMusic("bgm");
+        music();
+    }
+
+    MediaPlayer mediaPlayer;
+
+    public void music() {
+        String s = getClass().getResource("/music/bgm.wav").toExternalForm();
+
+        Media h = new Media(s);
+
+        mediaPlayer = new MediaPlayer(h);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+
+        Settings.musicOn.addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+            mediaPlayer.play();
+            } else {
+                mediaPlayer.pause();
+            }
+        });
+
+        if (Settings.musicOn.get()) {
+            mediaPlayer.play();
+        }
     }
 
     public static Stage getStage() {
