@@ -115,7 +115,7 @@ public class QuizController {
 
     private String[][] questions() {
         return switch (difficulty) {
-            case "Intermediate", "Medium" -> MEDIUM_QUESTIONS;
+            case "Medium" -> MEDIUM_QUESTIONS;
             case "Hard" -> HARD_QUESTIONS;
             default -> EASY_QUESTIONS;
         };
@@ -123,7 +123,7 @@ public class QuizController {
 
     private int[] answers() {
         return switch (difficulty) {
-            case "Intermediate", "Medium" -> MEDIUM_ANSWERS;
+            case "Medium" -> MEDIUM_ANSWERS;
             case "Hard" -> HARD_ANSWERS;
             default -> EASY_ANSWERS;
         };
@@ -131,7 +131,7 @@ public class QuizController {
 
     private int secondsForDifficulty() {
         return switch (difficulty) {
-            case "Intermediate", "Medium" -> MEDIUM_SECONDS;
+            case "Medium" -> MEDIUM_SECONDS;
             case "Hard" -> HARD_SECONDS;
             default -> EASY_SECONDS;
         };

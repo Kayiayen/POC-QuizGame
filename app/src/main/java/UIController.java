@@ -74,7 +74,6 @@ public class UIController {
     private void exitGame(ActionEvent event) {
         javafx.stage.Stage stage = (javafx.stage.Stage)
             ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        AudioManager.stopAll();
         stage.close();
     }
 
